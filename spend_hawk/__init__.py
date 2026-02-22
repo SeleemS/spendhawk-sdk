@@ -1,3 +1,5 @@
+# MIT License - Copyright (c) 2026 Spend Hawk Contributors
+# See LICENSE file for full license text
 """
 Spend Hawk SDK - LLM Cost Tracking
 
