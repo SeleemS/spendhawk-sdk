@@ -21,6 +21,12 @@ PRICING = {
         "claude-3-haiku-20240307": {"input": 0.00025, "output": 0.00125},
         "claude-3-5-sonnet-20241022": {"input": 0.003, "output": 0.015},
         "claude-3-5-haiku-20241022": {"input": 0.001, "output": 0.005},
+    },
+    "google": {
+        "gemini-pro": {"input": 0.0005, "output": 0.0015},
+        "gemini-pro-vision": {"input": 0.0025, "output": 0.0075},
+        "gemini-1.5-pro": {"input": 0.00075, "output": 0.003},
+        "gemini-1.5-flash": {"input": 0.000075, "output": 0.0003},
     }
 }
 

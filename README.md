@@ -1,6 +1,6 @@
 # Spend Hawk SDK
 
-**Automatic LLM cost tracking for OpenAI and Anthropic.**
+**Automatic LLM cost tracking for OpenAI, Anthropic, and Google Generative AI.**
 
 Track your AI API costs automatically with zero code changes. Spend Hawk intercepts API responses (never your API keys!) and sends usage metrics to your dashboard.
 
@@ -24,7 +24,7 @@ pip install spend-hawk-sdk
 import spend_hawk
 from openai import OpenAI
 
-# 1. Initialize Spend Hawk (patches OpenAI and Anthropic)
+# 1. Initialize Spend Hawk (patches OpenAI, Anthropic, and Google)
 spend_hawk.patch_all()
 
 # 2. Optional: Set project context
@@ -78,8 +78,9 @@ with spend_hawk.context(project_id="project-b", agent="agent-2"):
 
 ## Supported Providers
 
-- ✅ OpenAI (GPT-4, GPT-3.5, etc.)
-- ✅ Anthropic (Claude 3 Opus, Sonnet, Haiku)
+- ✅ OpenAI (GPT-4, GPT-3.5, GPT-4o, etc.)
+- ✅ Anthropic (Claude 3 Opus, Sonnet, Haiku, etc.)
+- ✅ Google Generative AI (Gemini Pro, Gemini 1.5, etc.)
 
 ## Security Model
 
@@ -126,7 +127,7 @@ pytest tests/
 
 ## Examples
 
-### Basic usage
+### Basic usage with OpenAI
 
 ```python
 import spend_hawk
@@ -155,20 +156,37 @@ response = client.messages.create(
 )
 ```
 
+### With Google Generative AI
+
+```python
+import spend_hawk
+spend_hawk.patch_all()
+
+import google.generativeai as genai
+from google.generativeai import GenerativeModel
+
+genai.configure(api_key="your-api-key")
+model = GenerativeModel("gemini-pro")
+response = model.generate_content("Hello, Gemini!")
+```
+
 ### Multi-agent system
 
 ```python
 import spend_hawk
 spend_hawk.patch_all()
 
-# Track different agents
+# Track different agents and providers
 with spend_hawk.context(agent="research-agent"):
     research_response = openai_call()
 
 with spend_hawk.context(agent="writing-agent"):
-    writing_response = openai_call()
+    writing_response = anthropic_call()
 
-# Dashboard shows costs per agent
+with spend_hawk.context(agent="brainstorm-agent"):
+    brainstorm_response = google_call()
+
+# Dashboard shows costs per agent and provider
 ```
 
 ## License

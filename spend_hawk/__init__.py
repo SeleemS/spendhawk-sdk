@@ -3,18 +3,18 @@
 """
 Spend Hawk SDK - LLM Cost Tracking
 
-Track your OpenAI and Anthropic API costs automatically with minimal overhead.
+Track your OpenAI, Anthropic, and Google Generative AI costs automatically with minimal overhead.
 
 Usage:
     import spend_hawk
     
-    # Initialize (patches OpenAI and Anthropic)
+    # Initialize (patches OpenAI, Anthropic, and Google)
     spend_hawk.patch_all()
     
     # Set context (optional)
     spend_hawk.set_context(project_id="my-project", agent="my-agent")
     
-    # Use OpenAI or Anthropic as normal
+    # Use OpenAI, Anthropic, or Google as normal
     import openai
     client = openai.OpenAI()
     response = client.chat.completions.create(
