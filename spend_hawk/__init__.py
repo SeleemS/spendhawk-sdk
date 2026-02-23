@@ -24,11 +24,12 @@ Usage:
     # Metrics automatically sent to Spend Hawk backend
 """
 
-__version__ = "0.1.0"
+__version__ = "0.1.2"
 
 from .patch import patch_all, unpatch_all
 from .context import set_context, get_context, context
 from .config import config
+from .pricing import init_pricing, get_pricing, calculate_cost, refresh_pricing
 
 __all__ = [
     'patch_all',
@@ -37,4 +38,8 @@ __all__ = [
     'get_context',
     'context',
     'config',
+    'init_pricing',
+    'get_pricing',
+    'calculate_cost',
+    'refresh_pricing',
 ]
